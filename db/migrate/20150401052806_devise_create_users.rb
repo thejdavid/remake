@@ -18,7 +18,27 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.datetime :last_sign_in_at
       t.inet     :current_sign_in_ip
       t.inet     :last_sign_in_ip
-
+      t.string :username
+      t.string :firstname 
+      t.string :lastname 
+      t.string :building 
+      t.string :adress1 
+      t.string :ddress2 
+      t.string :city 
+      t.string :state 
+      t.string :paypal_email 
+      t.string :phone 
+      t.string :billingadress 
+      t.string :billingcity 
+      t.string :billingregion 
+      t.string :billingpostcode 
+      t.string :billingcountry 
+      t.string :shippingadress 
+      t.string :shippingcity 
+      t.string :shippingregion
+      t.string :shippingpostcode
+      t.string :shippingcountry
+      t.boolean :artist,default: false
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at
