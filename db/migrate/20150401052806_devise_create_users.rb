@@ -38,6 +38,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :shippingregion
       t.string :shippingpostcode
       t.string :shippingcountry
+      t.string :picture
       t.boolean :artist,default: false
       ## Confirmable
       # t.string   :confirmation_token
