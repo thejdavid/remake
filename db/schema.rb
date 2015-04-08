@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407013503) do
+ActiveRecord::Schema.define(version: 20150408224945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,11 +70,15 @@ ActiveRecord::Schema.define(version: 20150407013503) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer "category_id"
-    t.integer "designer_id"
-    t.string  "name"
-    t.string  "description"
-    t.string  "image"
+    t.integer  "category_id"
+    t.integer  "designer_id"
+    t.string   "name"
+    t.string   "description"
+    t.string   "image"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -108,9 +112,14 @@ ActiveRecord::Schema.define(version: 20150407013503) do
     t.string   "shippingregion"
     t.string   "shippingpostcode"
     t.string   "shippingcountry"
+    t.string   "picture"
     t.boolean  "artist",                 default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

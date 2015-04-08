@@ -1,0 +1,9 @@
+<%= form_tag products_path, multipart: true do %>
+  name
+  <%= text_field_tag(:name) %></br>
+  description
+  <%= text_field_tag(:description) %></br>
+  image
+  <%= file_field_tag "image" %></br>
+  <%= submit_tag("create product") %>
+<% end %>

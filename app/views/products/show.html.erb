@@ -1,93 +1,99 @@
-      <div class="row">
 
-            <div class="col-md-3">
-                <p class="lead">Select a Category</p>
-                <div class="list-group">
-                    <% @categories.each do |category| %>
-                        <div class="list-group-item"><%= category.name %></div>
-                    <% end %>
+    <div class="col-md-3">
+        <p class="lead">Select a Category</p>
+        <div class="list-group">
+            <% @categories.each do |category| %>
+            <div class="list-group-item"><%= category.name %></div>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+      <div class="row">
+        <div class="thumbnail pull-left">
+            <%= image_tag(@product.image) %>
+            <div class="caption-full">
+                <h4>$24.99</h4>
+                <h4>
+                    <%= link_to(@product.name , product_path(@product)) %>
+                </h4>
+            </div>
+        </div>
+         <div class="pull-right">
+                <p> <%= @product.description %> </p>
+            <%= image_tag @product.image.url(:vsmall),:style => "border:5px solid red;" %>
+            <%= image_tag @product.image.url(:thumb),:style => "border:5px solid black;" %>
+            <%= image_tag @product.image.url(:thumb),:style => "border:5px solid black;" %></br>
+                <a href="#" class="btn btn-primary">Buy Now!</a>
+
+         </div>
+        </div>
+
+            <div class="ratings">
+                <p class="pull-right">3 reviews</p>
+                <p>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    4.0 stars
+                </p>
+            </div>
+
+        <div class="well">
+
+            <div class="text-right">
+                <a class="btn btn-success">Leave a Review</a>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    Anonymous
+                    <span class="pull-right">10 days ago</span>
+                    <p>This product was great in terms of quality. I would definitely buy another!</p>
                 </div>
             </div>
 
-            <div class="col-md-9">
+            <hr>
 
-                <div class="thumbnail">
-                    <%= image_tag(@product.image) %>
-                    <div class="caption-full">
-                        <h4 class="pull-right">$24.99</h4>
-                        <h4>
-                            <%= link_to(@product.name , product_path(@product)) %>
-                        </h4>
-                        <p> <%= @product.description %> </p>
-                    </div>
-                    <div class="ratings">
-                        <p class="pull-right">3 reviews</p>
-                        <p>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star-empty"></span>
-                            4.0 stars
-                        </p>
-                    </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    Anonymous
+                    <span class="pull-right">12 days ago</span>
+                    <p>I've alredy ordered another one!</p>
                 </div>
+            </div>
 
-                <div class="well">
+            <hr>
 
-                    <div class="text-right">
-                        <a class="btn btn-success">Leave a Review</a>
-                    </div>
-
-                    <hr>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star-empty"></span>
-                            Anonymous
-                            <span class="pull-right">10 days ago</span>
-                            <p>This product was great in terms of quality. I would definitely buy another!</p>
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star-empty"></span>
-                            Anonymous
-                            <span class="pull-right">12 days ago</span>
-                            <p>I've alredy ordered another one!</p>
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star-empty"></span>
-                            Anonymous
-                            <span class="pull-right">15 days ago</span>
-                            <p>I've seen some better than this, but not at this price. I definitely recommend this item.</p>
-                        </div>
-                    </div>
-
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    Anonymous
+                    <span class="pull-right">15 days ago</span>
+                    <p>I've seen some better than this, but not at this price. I definitely recommend this item.</p>
                 </div>
-
             </div>
 
         </div>
 
     </div>
+
+</div>
