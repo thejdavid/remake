@@ -1,0 +1,112 @@
+
+    <div class="col-md-3">
+        <p class="lead">Select a Category</p>
+        <div class="list-group">
+            <% @categories.each do |category| %>
+            <div class="list-group-item"><%= category.name %></div>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+      <div class="row">
+        <div class="thumbnail pull-left">
+            <%= image_tag(@product.image) %>
+            <div class="caption-full">
+                <h4>$24.99</h4>
+                <h4>
+                    <%= link_to(@product.name , product_path(@product)) %>
+                </h4>
+            </div>
+        </div>
+         <div class="pull-right">
+                <p> <%= @product.description %> </p>
+            <%= image_tag @product.image.url(:vsmall),:style => "border-image: url(/assets/border-artnshop.png) 27 27 36 21 fill repeat;border-style: solid;border-width: 10px 10px 17px 10px;" %>
+            <%= image_tag @product.image.url(:thumb),:style => "border-image: url(/assets/border-artnshop.png) 27 27 36 21 fill repeat;border-style: solid;border-width: 10px 10px 17px 10px;" %>
+            <%= image_tag @product.image.url(:thumb),:style => "border:5px solid black;" %></br>
+                <a href="#" class="btn btn-primary pull-right">Buy Now!</a>
+
+         </div>
+        </div>
+
+            <div class="ratings">
+                <p class="pull-right">3 reviews</p>
+                <p>
+                    4.0 stars
+                </p>
+            </div>
+
+        <div class="well">
+<button id="create-comment" class="pull-right">New comment</button>
+<link rel="stylesheet" href="/assets/jquery-ui.css">
+<script src="/assets/jquery-1.10.2.js"></script>
+<script src="/assets/jquery-ui.js"></script>
+    <style>
+        div#users-contain { width: 350px; margin: 20px 0; }
+        div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+        div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+        .ui-dialog .ui-state-error { padding: .3em; }
+        .validateTips { border: 1px solid transparent; padding: 0.3em; }
+    </style>
+    <script>
+    $(function() {
+ dialogComment = $( "#dialog-form" ).dialog({
+  autoOpen: false,
+  height: 570,
+  width: 570,
+  modal: true,
+  buttons: {
+
+    Cancel: function() {
+      dialogComment.dialog( "close" );
+    }
+  },
+  close: function() {
+    form[ 0 ].reset();
+  }
+});
+
+ form = dialogComment.find( "form" ).on( "submit", function( event ) {
+ });
+
+ $( "#create-comment" ).button().on( "click", function() {
+  dialogComment.dialog( "open" );
+});
+});
+</script>
+</head>
+<body>
+
+<div id="dialog-form" title="New Comment">
+    <p class="validateTips">All form fields are required.</p>
+        <%= form_tag product_comments_path(@product) do %>
+        Title</br>
+        <%= text_field_tag(:name) %></br>
+        Message</br>
+        <%= text_area_tag(:description, :text, size: '50x10') %></br>
+        <%= submit_tag("Post") %>
+        <% end %>
+</div>
+
+
+
+</body>
+
+</div>
+
+           <% @comments.each do |comment| %>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <%= comment.user.username %>
+                    </br ><%= comment.content %>
+                </div>
+            </div>
+            <hr>
+            <% end %>
+
+
+
+        </div>
+</div>
+   
