@@ -1,6 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
 
+#button {
+border:1px solid #0c799e;
+width:250px;
+padding:10px;
+font-size:16px;
+font-weight:700;
+color:#fff;
+border-radius:3px;
+background:linear-gradient(to bottom,#59d0f8 5%,#49c0e8 100%);
+cursor:pointer
+}
+#button:hover {
+background:linear-gradient(to bottom,#49c0e8 5%,#59d0f8 100%)
+}
+input[type=text] {
+margin-top:5px;
+margin-bottom:20px;
+width:96%;
+border-radius:5px;
+border:0;
+padding:5px 0
+}
+
+input[type=submit] {
+width:30%;
+border:1px solid #59b4d4;
+background:#0078a3;
+color:#eee;
+padding:3px 0;
+border-radius:5px;
+margin-left:33%;
+cursor:pointer
+}
+input[type=submit]:hover {
+border:1px solid #666;
+background:#555;
+color:#fff
+}
+.ui-dialog .ui-dialog-content {
+padding:2em;
+}
+</style>
 <head>
 
     <meta charset="utf-8">
@@ -19,6 +62,10 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+   <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+   <script src="javascripts/dialog.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -75,7 +122,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Copyright &copy; Remake</p>
                 </div>
             </div>
         </footer>
