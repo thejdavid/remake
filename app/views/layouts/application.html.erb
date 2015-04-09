@@ -167,7 +167,7 @@ $(function() {
     </div>
     <!-- /.container -->
 
-
+<% if current_user %>
 
   <div id="dialog-bite" title="New Product">
     <p class="validateTips">All form fields are required.</p>
@@ -179,6 +179,7 @@ $(function() {
     <%= submit_tag("Post") %>
     <% end %>
   </div>
+  <% end %>
 </body>
 
 </html>
