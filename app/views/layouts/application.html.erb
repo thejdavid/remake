@@ -55,17 +55,16 @@ padding:2em;
     <title>Artnshop remake</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/heroic-features.css" rel="stylesheet">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <link href="/assets/heroic-features.css" rel="stylesheet">
+  <%= stylesheet_link_tag    'application', media: 'all'%>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-   <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
-   <script src="javascripts/dialog.js"></script>
+<link rel="stylesheet" href="/assets/jquery-ui.css">
+<script src="/assets/jquery-1.10.2.js"></script>
+<script src="/assets/jquery-ui.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -99,7 +98,45 @@ padding:2em;
                 </ul>
                     <ul class="nav navbar-nav navbar-right">
                     <% if current_user %>
-                      <li> <%= link_to("Create a New Product", new_product_path) %></li>
+
+<!-- CLEAAAAANNNNNNNNNNNNNNNNANANANANANANANANAN -->
+<style>
+div#users-contain { width: 350px; margin: 20px 0; }
+div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+.ui-dialog .ui-state-error { padding: .3em; }
+.validateTips { border: 1px solid transparent; padding: 0.3em; }
+</style>
+<script>
+$(function() {
+ dialog = $( "#dialog-bite" ).dialog({
+  autoOpen: false,
+  height: 570,
+  width: 570,
+  modal: true,
+  buttons: {
+
+    Cancel: function() {
+      dialog.dialog( "close" );
+    }
+  },
+  close: function() {
+    form[ 0 ].reset();
+  }
+});
+
+ form = dialog.find( "bite" ).on( "submit", function( event ) {
+ });
+
+ $( "#create-product" ).button().on( "click", function() {
+  dialog.dialog( "open" );
+});
+});
+</script>
+</head>
+<body>
+
+                      <li> <button id="create-product" style="margin-top:5px;">Create a Product</button></li>
                       <li> <%= link_to("Logout", destroy_user_session_path, method: :delete) %></li>
                     <% else %>
                       <li><%= link_to("SignIn", new_user_session_path) %></li>
@@ -130,12 +167,18 @@ padding:2em;
     </div>
     <!-- /.container -->
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
 
+  <div id="dialog-bite" title="New Product">
+    <p class="validateTips">All form fields are required.</p>
+    <%= form_tag "#" do %>
+    Title</br>
+    <%= text_field_tag(:name) %></br>
+    Message</br>
+    <%= text_area_tag(:description, :text, size: '50x10') %></br>
+    <%= submit_tag("Post") %>
+    <% end %>
+  </div>
 </body>
 
 </html>

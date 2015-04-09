@@ -32,32 +32,75 @@
             <div class="ratings">
                 <p class="pull-right">3 reviews</p>
                 <p>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star-empty"></span>
                     4.0 stars
                 </p>
             </div>
 
         <div class="well">
 
-            <div class="text-right">
-                <a class="btn btn-success" id="button">Leave a Review</a>
-            </div>
+<button id="create-comment" class="pull-right">New comment</button>
+<link rel="stylesheet" href="/assets/jquery-ui.css">
+<script src="/assets/jquery-1.10.2.js"></script>
+<script src="/assets/jquery-ui.js"></script>
+    <style>
+        div#users-contain { width: 350px; margin: 20px 0; }
+        div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+        div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+        .ui-dialog .ui-state-error { padding: .3em; }
+        .validateTips { border: 1px solid transparent; padding: 0.3em; }
+    </style>
+    <script>
+    $(function() {
+ dialogComment = $( "#dialog-form" ).dialog({
+  autoOpen: false,
+  height: 570,
+  width: 570,
+  modal: true,
+  buttons: {
+
+    Cancel: function() {
+      dialogComment.dialog( "close" );
+    }
+  },
+  close: function() {
+    form[ 0 ].reset();
+  }
+});
+
+ form = dialogComment.find( "form" ).on( "submit", function( event ) {
+ });
+
+ $( "#create-comment" ).button().on( "click", function() {
+  dialogComment.dialog( "open" );
+});
+});
+</script>
+</head>
+<body>
+
+<div id="dialog-form" title="New Comment">
+    <p class="validateTips">All form fields are required.</p>
+        <%= form_tag product_comments_path(@product) do %>
+        Title</br>
+        <%= text_field_tag(:name) %></br>
+        Message</br>
+        <%= text_area_tag(:description, :text, size: '50x10') %></br>
+        <%= submit_tag("Post") %>
+        <% end %>
+</div>
+
+
+
+
+</body>
+
+</div>
 
            <% @comments.each do |comment| %>
             <hr>
             <div class="row">
                 <div class="col-md-12">
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star-empty"></span>
                     <%= comment.user.username %>
-                    <span class="pull-right">10 days ago</span>
                     </br ><%= comment.content %>
                 </div>
             </div>
@@ -67,15 +110,5 @@
 
 
         </div>
-
-         <div id="dialog" title="Comment here">
-        <%= form_tag product_comments_path(@product) do %>
-        Title</br>
-        <%= text_field_tag(:title) %></br>
-        Message</br>
-        <%= text_area_tag(:ad, :text, size: '50x10') %></br>
-        <%= submit_tag("Post") %>
-        <% end %>
 </div>
-
-</div>
+   
