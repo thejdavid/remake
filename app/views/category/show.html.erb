@@ -1,3 +1,27 @@
+            <div class="col-md-3">
+                <p class="lead">Select a Category</p>
+                <div class="list-group">
+                    <% @categories.each do |category| %>
+                        <%= link_to(category.name , category_path(category), :class=>"list-group-item") %>
+                    <% end %>
+                </div>
+            </div>
+
+ <div class="col-md-9">
+
+
 <% @product_category.each do |product| %>
-<%= product.name %>
+            <div class="col-md-4 col-sm-6 hero-feature">
+                <div class="thumbnail">
+                    <%= image_tag product.image.url(:thumb) %>
+                    <div class="caption">
+                        <h5><%= product.name %></h5>
+                        <p><%= product.description %></p>
+                        <p>
+                            <%= link_to("More info", product_path(product), :class=>"btn btn-default") %>
+                            <a href="#" class="btn btn-primary">Buy Now!</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
 <% end %>
