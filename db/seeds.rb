@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'faker'
-User.create!(username: Faker::Name.name, email: "jd@jd.com", password: "password",picture:Faker::Avatar.image)
+User.create!(username: Faker::Name.name, email: "jd@jd.com", password: "password",picture:Faker::Avatar.image,artist: true)
 10.times {Category.create!(name:Faker::Commerce.department) }
 
 array_of_cat_id = []

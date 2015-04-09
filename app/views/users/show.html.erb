@@ -1,0 +1,31 @@
+    <div class="col-md-3">
+        <%= image_tag @user.picture.url(:thumb) %></br>
+        <p class="lead"><%= @user.username %></p>
+        <div class="list-group">
+            <div class="list-group-item">Home</div>
+            <div class="list-group-item">Shop</div>
+            <div class="list-group-item">Contact</div>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+
+  <% @designed_products.each do |product| %>
+            <div class="col-md-4 col-sm-6 hero-feature">
+                <div class="thumbnail">
+                    <%= image_tag product.image.url(:thumb) %>
+                    <div class="caption">
+                        <h5><%= product.name %></h5>
+                        <p><%= product.description %></p>
+                        <p>
+                            <%= link_to("More info", product_path(product), :class=>"btn btn-default") %>
+                            <a href="#" class="btn btn-primary">Buy Now!</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+<% end %>
+
+</div>
+
+</div>
