@@ -45,6 +45,7 @@ class MoreTables < ActiveRecord::Migration
       t.string :frame_color
       t.string :frame_model
       t.string :weight
+      t.integer :product_details_id
     end
 
     create_table :product_details do |t|
@@ -52,7 +53,9 @@ class MoreTables < ActiveRecord::Migration
       t.string :frame_color
       t.string :frame_model
       t.integer :product_id
-      t.integer :designer_markup
+      t.string :material
+      t.integer :designer_markup, :default => 0
+      t.integer :retail_price
     end
 
     create_table :comissions do |t|

@@ -1,0 +1,23 @@
+<h2>My comissions</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Product Title</th>
+        <th>Size</th>
+        <th>Material</th>
+        <th>Comission</th>
+        <th>Retail Price</th>
+      </tr>
+    </thead>
+    <tbody>
+  <% @sold_products.each do |product_detail| %>
+      <tr>
+  <td><%= product_detail.product.name %></td>
+  <td><%= product_detail.size %></td>
+  <td><%= product_detail.material %></td>
+  <td><%= product_detail.designer_markup %></td>
+  <td><%= product_detail.retail_price %></td>
+      </tr>
+<% end %>
+    </tbody>
+  </table>

@@ -17,7 +17,6 @@
     <%= image_tag product.image.url(:thumb) %>
     <div class="caption">
       <h5><%= product.name %></h5>
-      <p><%= product.description %></p>
       <p>
         <%= link_to("More info", product_path(product), :class=>"btn btn-default") %>
         <a href="#" class="btn btn-primary">Buy Now!</a>

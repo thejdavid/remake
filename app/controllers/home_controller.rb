@@ -4,6 +4,6 @@ class HomeController < ApplicationController
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   def index
-    @products = Product.all
+    @products = Product.all.limit(8)
   end
 end

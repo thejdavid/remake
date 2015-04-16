@@ -19,9 +19,8 @@ background:linear-gradient(to bottom,#49c0e8 5%,#59d0f8 100%)
 input[type=text] {
 margin-top:5px;
 margin-bottom:20px;
-width:96%;
 border-radius:5px;
-border:0;
+border:1;
 padding:5px 0
 }
 
@@ -59,6 +58,7 @@ padding:2em;
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="/assets/jquery-ui.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <script src="/assets/jquery-1.10.2.js"></script>
   <script src="/assets/jquery-ui.js"></script>
 </head>
@@ -90,7 +90,6 @@ $(function() {
 });
 });
 </script>
-
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -112,17 +111,28 @@ $(function() {
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
         <li> <button id="create-product" style="margin-top:5px;">Create a Product</button></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">My Shop <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href=<%="/users/"+current_user.id.to_s %>>My Shop</a></li>
+            <li><%= link_to("Comission", products_comission_path) %></li>
+            <li><a href="/products/manage">Manage Products</a></li>
+          </ul>
+        </li>
         <li> <%= link_to("Logout", destroy_user_session_path, method: :delete) %></li>
         <% else %>
         <li><%= link_to("SignIn", new_user_session_path) %></li>
         <li><%= link_to("SignUp", new_user_registration_path) %></li>
-      </ul>
       <% end %>
+        <li><%= link_to("Cart(0)", users_path) %></li>
+      </ul>
     </div>
   </div>
 </nav>
 </head>
 <body>
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
   <!-- Page Content -->
   <div class="container">
    <%= yield %>
@@ -141,13 +151,16 @@ $(function() {
 <% if current_user %>
 <div id="dialog-bite" title="New Product">
   <p class="validateTips">All form fields are required.</p>
-  <%= form_tag "#" do %>
-  Title</br>
-  <%= text_field_tag(:name) %></br>
-  Message</br>
-  <%= text_area_tag(:description, :text, size: '50x10') %></br>
-  <%= submit_tag("Post") %>
-  <% end %>
+<%= form_tag products_path, multipart: true, remote: true do %>
+  name
+    <%= text_field_tag(:name) %></br>
+  description
+    <%= text_field_tag(:description) %></br>
+  image
+    <%= file_field_tag "image" %></br>
+    <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %> 
+  <%= submit_tag("create product") %>
+<% end %>
 </div>
 <% end %>
 </body>

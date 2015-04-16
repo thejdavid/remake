@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+  get 'products/manage' => 'products#manage'
+  get 'products/comission' => 'products#comission'
+
   root 'home#index'
   resources :products do
     resources :comments
