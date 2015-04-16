@@ -39,35 +39,32 @@
   <p class="lead">Select a Category</p>
   <div class="list-group">
     <% @categories.each do |category| %>
-    <div class="list-group-item"><%= category.name %></div>
+    <%= link_to(category.name , category_path(category), :class=>"list-group-item") %>
     <% end %>
   </div>
 </div>
 <div class="col-md-9">
   <div class="row">
     <div class="thumbnail pull-left">
-      <%= image_tag(@product.image) %>
+      <%= image_tag(@product.image.url(:medium)) %>
       <div class="caption-full">
-        <h4>$24.99</h4>
+        <h4>Starting at <%= @retailprice.retail_price %>$</h4>
         <h4>
           <%= link_to(@product.name , product_path(@product)) %>
         </h4>
       </div>
     </div>
     <div class="pull-right">
-      <p> <%= @product.description %> </p>
-      <%= image_tag @product.image.url(:vsmall),:style => "border-image: url(/assets/border-artnshop.png) 27 27 36 21 fill repeat;border-style: solid;border-width: 10px 10px 17px 10px;" %>
+      <%= image_tag @designer.picture.url(:thumb) %></br>
+      <%= @designer.username %></br>
+      <h4 style="color:#E80FAC;">Description</h4>
+      <div style="width:360px;"><%= @product.description %></div>
+      <%= image_tag @product.image.url(:thumb),:style => "border-image: url(/assets/border-artnshop.png) 27 27 36 21 fill repeat;border-style: solid;border-width: 10px 10px 17px 10px;" %>
       <%= image_tag @product.image.url(:thumb),:style => "border-image: url(/assets/border-artnshop.png) 27 27 36 21 fill repeat;border-style: solid;border-width: 10px 10px 17px 10px;" %>
       <%= image_tag @product.image.url(:thumb),:style => "border:5px solid black;" %></br>
       <a href="#" class="btn btn-primary pull-right">Buy Now!</a>
     </div>
   </div>
-    <div class="ratings">
-      <p class="pull-right">3 reviews</p>
-      <p>
-        4.0 stars
-      </p>
-    </div>
     <div class="well">
       <button id="create-comment" class="pull-right">New comment</button>
     </head>
@@ -87,8 +84,11 @@
   <% @comments.each do |comment| %>
   <hr>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-3 pull-left">
+      <%= image_tag comment.user.picture.url(:thumb) %></br>
       <%= comment.user.username %>
+    </div>
+    <div class="col-md-9" style="background-color:#f5f5f5;min-height:100px">
     </br ><%= comment.content %>
   </div>
 </div>
