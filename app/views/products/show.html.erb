@@ -62,6 +62,7 @@
       <%= image_tag @product.image.url(:thumb),:style => "border-image: url(/assets/border-artnshop.png) 27 27 36 21 fill repeat;border-style: solid;border-width: 10px 10px 17px 10px;" %>
       <%= image_tag @product.image.url(:thumb),:style => "border-image: url(/assets/border-artnshop.png) 27 27 36 21 fill repeat;border-style: solid;border-width: 10px 10px 17px 10px;" %>
       <%= image_tag @product.image.url(:thumb),:style => "border:5px solid black;" %></br>
+      <%= select_tag "Print", options_from_collection_for_select(@product.product_details, "id","line_item") %>
       <a href="#" class="btn btn-primary pull-right">Buy Now!</a>
     </div>
   </div>

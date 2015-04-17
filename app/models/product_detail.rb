@@ -9,4 +9,7 @@ class ProductDetail < ActiveRecord::Base
   def retail_price_cal
     self.retail_price = self.baseprice + self.designer_markup
   end
+  def line_item
+    "#{self.material} #{self.size} #{self.retail_price}$"
+  end
 end
