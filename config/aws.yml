@@ -1,0 +1,9 @@
+development:
+  access_key_id: "AKIAJKMLQRJQWYA4KF5A"
+  secret_access_key: "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"
+test:
+  access_key_id: abc...
+  secret_access_key: abc...
+production:
+  access_key_id: "AKIAJKMLQRJQWYA4KF5A"
+  secret_access_key: "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"
