@@ -75,6 +75,7 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Do not dump schema after migrations.
+  AWS::S3::DEFAULT_HOST = "s3.eu-central-1.amazonaws.com"
   config.active_record.dump_schema_after_migration = false
   config.paperclip_defaults = {
     :storage => :s3,
