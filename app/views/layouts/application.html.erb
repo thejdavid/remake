@@ -1,48 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-
-#button {
-border:1px solid #0c799e;
-width:250px;
-padding:10px;
-font-size:16px;
-font-weight:700;
-color:#fff;
-border-radius:3px;
-background:linear-gradient(to bottom,#59d0f8 5%,#49c0e8 100%);
-cursor:pointer
-}
-#button:hover {
-background:linear-gradient(to bottom,#49c0e8 5%,#59d0f8 100%)
-}
-input[type=text] {
-margin-top:5px;
-margin-bottom:20px;
-border-radius:5px;
-border:1;
-padding:5px 0
-}
-
-input[type=submit] {
-width:30%;
-border:1px solid #59b4d4;
-background:#0078a3;
-color:#eee;
-padding:3px 0;
-border-radius:5px;
-margin-left:33%;
-cursor:pointer
-}
-input[type=submit]:hover {
-border:1px solid #666;
-background:#555;
-color:#fff
-}
-.ui-dialog .ui-dialog-content {
-padding:2em;
-}
-</style>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -64,32 +21,6 @@ padding:2em;
 </head>
 
 <body>
-<script>
-$(function() {
- dialog = $( "#dialog-bite" ).dialog({
-  autoOpen: false,
-  height: 570,
-  width: 570,
-  modal: true,
-  buttons: {
-
-    Cancel: function() {
-      dialog.dialog( "close" );
-    }
-  },
-  close: function() {
-    form[ 0 ].reset();
-  }
-});
-
- form = dialog.find( "bite" ).on( "submit", function( event ) {
- });
-
- $( "#create-product" ).button().on( "click", function() {
-  dialog.dialog( "open" );
-});
-});
-</script>
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -130,11 +61,11 @@ $(function() {
 </nav>
 </head>
 <body>
+  <!-- Page Content -->
+  <div class="container">
   <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>"><%= value %></div>
   <% end %>
-  <!-- Page Content -->
-  <div class="container">
    <%= yield %>
    <!-- Footer -->
    <footer>
@@ -146,22 +77,20 @@ $(function() {
   </footer>
 
 </div>
-<!-- /.container -->
-
 <% if current_user %>
-<div id="dialog-bite" title="New Product">
-  <p class="validateTips">All form fields are required.</p>
-<%= form_tag products_path, multipart: true, remote: true do %>
-  name
+  <div id="product-modal" title="New Product">
+    <p class="validateTips">All form fields are required.</p>
+    <%= form_tag products_path, multipart: true, remote: true do %>
+    <%= label_tag 'Name' %>
     <%= text_field_tag(:name) %></br>
-  description
+    <%= label_tag 'Description' %>
     <%= text_field_tag(:description) %></br>
-  image
+    <%= label_tag 'Image' %>
     <%= file_field_tag "image" %></br>
     <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %> 
-  <%= submit_tag("create product") %>
-<% end %>
-</div>
+    <%= submit_tag("create product") %>
+    <% end %>
+  </div>
 <% end %>
 </body>
 

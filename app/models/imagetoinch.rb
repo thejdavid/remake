@@ -1,5 +1,5 @@
 class Imagetoinch
-  attr_reader :onefiffty_dpi, :threehundred_dpi, :id
+  attr_reader :id, :onefiffty_dpi
   def initialize(product)
     #paperclip meta image_size method
     @id = product.id
@@ -46,34 +46,6 @@ class Imagetoinch
   end
 end
 
-
-# class Imagetoprint
-#   def initialize(imageToInchObject)
-#     @image_ti_object = imageToInchObject
-#     @array_of_printable_size =[]
-#   end
-# #maximum error ratio for both sides ex: an image of 41x41 inch would print at same price but wouldn't if it was 41x42 or 38x41 etc.
-#   def max_printable_size
-#     hash_of_size = {
-#       39..41 => "40x40",
-#       29..31 => "30x30",
-#       19..21 => "20x20",
-#       8..11 => "10x10"
-#     }
-#     if hash_of_size.select {|range_side| range_side === @image_ti_object.onefiffty_dpi[0]}.values.first == hash_of_size.select {|range_side| range_side === @image_ti_object.onefiffty_dpi[1] }.values.first
-#       hash_of_size.select {|range_side| range_side === @image_ti_object.onefiffty_dpi[0]}.values.first
-#     else
-# # False veut dire quil ny a pas de printable size.
-#       false
-#     end
-#   end
-
-#   def all_size
-#     allprintablesize = ["40x40","30x30","20x20","10x10"]
-#     allprintablesize.reject {|item| allprintablesize.rindex(item) < allprintablesize.rindex(max_printable_size) }
-#   end
-# end
-
 class Pricing
   def initialize(to_print_object)
     @to_print_object = to_print_object
@@ -108,23 +80,4 @@ class Pricing
     ProductDetail.create!(product_id:@to_print_object.id, material:"material3", baseprice:material3_price,size:size)
    end
   end
-  # method de ratio pour le preview select js a lupload
-  # def aspect_ratio
-  #   original_ratio = original_width / original_height
-  #   designer_ratio = designer_width / designer_height   ## taille de l'image de preview
-  #   if original_ratio > designer_ratio
-  #     designer_height = designer_width / original_ratio
-  #   else
-  #     designer_width = designer_height * original_ratio
-  #   end
-  # end
 end
-# p = Product.last
-# t = Imagetoinch.new(p)
-# t.to_inch
-# c = Imagetoprint.new(t)
-# c.max_printable_size
-# c.all_size
-# l = Pricing.new(c)
-# l.attributs_creation
-# UTILISE LE AFTER_SAVE CALLBACK POUR INSTANTIACTION CA EVITE DE CREE DES PRODUCTS_DETAILS QUAND LE PRODUCT EST PAS SAUVER.

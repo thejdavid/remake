@@ -10,20 +10,18 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @designer = User.find(@product.designer_id)
     @comments = Comment.where(product_id:params[:id])
-    @retailprice = @product.product_details.all.order("retail_price ASC").first
+    @retailprice = @product.product_details.order("retail_price ASC").first
   end
   def new
     @product = Product.new
   end
   def create
-    # ajout if logged in apres
     @product = Product.new(name:params[:name],description:params[:description],image:params[:image],designer_id:current_user.id)
     if @product.save
       redirect_to action: "edit", id: @product.id
     else
       render 'new'
     end
-    # @product = Product.create!(name:params[:name],description:params[:description],image:params[:image],designer_id:current_user.id)
      if current_user.artist == false
        user = User.find(current_user.id)
        user.update_attribute(:artist, true)

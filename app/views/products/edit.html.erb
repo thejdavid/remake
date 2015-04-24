@@ -1,11 +1,11 @@
 <h2> Edit <%= @product.name %> </h2>
 <%= image_tag @product.image(:vnice) %>
 <%= form_tag(product_path, method: "put") do %>
-name
-  <%= text_field_tag(:name, @product.name,:class => "input-small") %>
-description
-  <%= text_field_tag(:description, @product.description) %>
-  <div id="row">
+<%= label_tag 'Name' %>
+<%= text_field_tag(:name, @product.name,:class => "input-small") %>
+<%= label_tag 'Description' %>
+<%= text_field_tag(:description, @product.description) %>
+<div id="row">
   <table class="table table-hover">
     <thead>
       <tr>
@@ -17,17 +17,17 @@ description
       </tr>
     </thead>
     <tbody>
-<% @attributs.each do |attribut| %>
-<tr>
-  <td><%= attribut.size %></td>
-  <td><%=  attribut.material %></td>
-  <td><%= attribut.baseprice %></td>
-  <td><%= text_field_tag(attribut.id, attribut.designer_markup) %></td>
-  <td><%= attribut.retail_price %></td>
-</tr>
-<% end %>
+      <% @attributs.each do |attribut| %>
+      <tr>
+        <td><%= attribut.size %></td>
+        <td><%=  attribut.material %></td>
+        <td><%= attribut.baseprice %></td>
+        <td><%= text_field_tag(attribut.id, attribut.designer_markup) %></td>
+        <td><%= attribut.retail_price %></td>
+      </tr>
+      <% end %>
     </tbody>
   </table>
 </div>
-  <%= submit_tag("Edit") %>
+<%= submit_tag("Edit") %>
 <% end %>

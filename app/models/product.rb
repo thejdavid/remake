@@ -17,27 +17,14 @@ class Product < ActiveRecord::Base
   crop_attached_file :image
   after_create  :attributs_creator
 
-###############
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#333333333
   def attributs_creator
-    p = self
-    t = Imagetoinch.new(p)
-    t.run
-    if t.run == false  #file size not printable
+    toinch = Imagetoinch.new(self)
+    toinch.run
+    if toinch.run == false  #file size not printable
       raise "Image to small to be printed"
      else
-      l = Pricing.new(t)
-      l.attributs_creation
+      pricing_object = Pricing.new(toinch)
+      pricing_object.attributs_creation
     end
   end
 end

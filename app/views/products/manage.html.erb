@@ -8,14 +8,14 @@
       </tr>
     </thead>
     <tbody>
-<% @products.each do |product| %>
+    <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
         <td><%= link_to "edit", edit_product_path(product.id) %> </td>
         <td><%= button_to "delete", {:controller => :products,
       :action => 'destroy', :id => product.id }, :method => :delete %> </td>
       </tr>
-<% end %>
+    <% end %>
     </tbody>
   </table>
 

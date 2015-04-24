@@ -8,30 +8,30 @@
         .ui-dialog .ui-state-error { padding: .3em; }
         .validateTips { border: 1px solid transparent; padding: 0.3em; }
     </style>
-    <script>
-    $(function() {
- dialogComment = $( "#dialog-form" ).dialog({
-  autoOpen: false,
-  height: 570,
-  width: 570,
-  modal: true,
-  buttons: {
+<script>
+$(function() {
+  dialogComment = $( "#dialog-form" ).dialog({
+    autoOpen: false,
+    height: 570,
+    width: 570,
+    modal: true,
+    buttons: {
 
-    Cancel: function() {
-      dialogComment.dialog( "close" );
+      Cancel: function() {
+        dialogComment.dialog( "close" );
+      }
+    },
+    close: function() {
+      form[ 0 ].reset();
     }
-  },
-  close: function() {
-    form[ 0 ].reset();
-  }
-});
+  });
 
- form = dialogComment.find( "form" ).on( "submit", function( event ) {
- });
+  form = dialogComment.find( "form" ).on( "submit", function( event ) {
+  });
 
- $( "#create-comment" ).button().on( "click", function() {
-  dialogComment.dialog( "open" );
-});
+  $( "#create-comment" ).button().on( "click", function() {
+    dialogComment.dialog( "open" );
+  });
 });
 </script>
 
