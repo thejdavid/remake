@@ -10,18 +10,30 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @designer = User.find(@product.designer_id)
     @comments = Comment.where(product_id:params[:id])
+<<<<<<< HEAD
     @retailprice = @product.product_details.order("retail_price ASC").first
+=======
+    @retailprice = @product.product_details.all.order("retail_price ASC").first
+>>>>>>> b0e2a85f06547d5fad5ddab5118aa0bb40b76152
   end
   def new
     @product = Product.new
   end
   def create
+<<<<<<< HEAD
+=======
+    # ajout if logged in apres
+>>>>>>> b0e2a85f06547d5fad5ddab5118aa0bb40b76152
     @product = Product.new(name:params[:name],description:params[:description],image:params[:image],designer_id:current_user.id)
     if @product.save
       redirect_to action: "edit", id: @product.id
     else
       render 'new'
     end
+<<<<<<< HEAD
+=======
+    # @product = Product.create!(name:params[:name],description:params[:description],image:params[:image],designer_id:current_user.id)
+>>>>>>> b0e2a85f06547d5fad5ddab5118aa0bb40b76152
      if current_user.artist == false
        user = User.find(current_user.id)
        user.update_attribute(:artist, true)
